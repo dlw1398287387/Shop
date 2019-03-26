@@ -73,7 +73,6 @@ export function clientTimeZone(){
  * 国际化加载
  * 按照APP的国际化语言加载，由安卓或者ios传递 用户设置的国际化语言
  */
-
 export  function getBylanguage(){
 	var userPhone = navigator.userAgent;
 	if(userPhone.indexOf("Android")>-1){
@@ -85,7 +84,9 @@ export  function getBylanguage(){
 	}
 }
 
-
+/**
+ * 删除角标
+ */
 export  function removeArrIndexOf(arr,index){
 	for(var i=0;i<arr.length;i++){
 		if(arr[i]==index){

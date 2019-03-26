@@ -134,7 +134,7 @@
 	//		localStorage.setItem('jsonAPI', apis)
 	//}
 
-	import { Swipe, SwipeItem, Row, Col } from 'vant';
+	import { Swipe, SwipeItem, Row, Col ,} from 'vant';
 	export default {
 		name: 'pet_home',
 		data() {
@@ -153,6 +153,7 @@
 		},
 
 		mounted() {
+			
 			var that = this
 			//		  this.check()
 			//				alert(localStorage.getItem('jsonAPI'))
@@ -216,7 +217,7 @@
 			 */
 			Slide(value) {
 				if(value.length != 0) {
-					//		   		console.log("调用安卓sdk")
+					//console.log("调用安卓sdk")
 					downState(value)
 				}
 			},
@@ -226,6 +227,7 @@
 			SwipeItem,
 			Row,
 			Col,
+			
 		},
 	}
 </script>

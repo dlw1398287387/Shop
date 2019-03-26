@@ -132,7 +132,6 @@
 			Row, 
 			Col,
 			Search,
-			
 		}
 	}
 </script>

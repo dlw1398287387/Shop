@@ -90,6 +90,7 @@
 				checked: false,
 				result: [],
 				disabled: true,
+				
 			}
 		},
 		mounted() {

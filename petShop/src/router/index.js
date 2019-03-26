@@ -5,6 +5,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
+//	mode: 'history',
   routes: [
 		{
 			path:'/',
@@ -31,18 +32,15 @@ export default new Router({
 			name:'petStoreList',
 			component:()=>import('@/views/shop/petStoreList')
 		},
-//		{//商品详情页——(导航栏)
-//  	path:'/detailsLayout',
-//  	name:'detailsLayout',
-//  	component:()=>import('@/components/modularization/detailsLayout'),
-//  	children:[
-//  			
-//  	]
-//  },
 		{//商品详情页
 			path:'/details_navigation',
 			name:'details_navigation',
 			component:()=>import('@/views/shop/commodity/details_navigation')
+		},
+		{
+			path:'/purchase',
+			name:'purchase',
+			component:()=>import('@/views/shop/commodity/purchase')
 		},
 		{//用户主页
 			path:'/Users/User_page',
@@ -54,7 +52,7 @@ export default new Router({
 			name:'setting',
 			component:()=>import('@/views/shop/Users/setting')
 		},
-		{//店铺关注，喜欢，浏览几率 子页
+		{//店铺关注，喜欢，浏览记录 子页
 			path:'/container',
 			name:'container',
 			component:()=>import('@/views/shop/Users/container')
@@ -78,6 +76,16 @@ export default new Router({
 			path:'/Users/orderLists',
 			name:'orderLists',
 			component:()=>import('@/views/shop/Users/Orders/orderLists')
+		},
+		{//提交订单
+			path:'/confirmOrder',
+			name:'confirmOrder',
+			component:()=>import('@/views/shop/commodity/confirmOrder')
+		},
+		{//购物车订单提交
+			path:'/submitCart',
+			name:'submitCart',
+			component:()=>import('@/views/shop/commodity/submitCart')
 		},
 		{//购物车
 			path:'/shoppingCart',
@@ -104,11 +112,18 @@ export default new Router({
 			name:'feedback',
 			component:()=>import('@/views/shop/else/feedback')
 		},
+		{//关于我们
+			path:'/User/About_Us',
+			name:'About_Us',
+			component:()=>import('@/views/shop/else/About_Us')
+		},
     {//400错误页面
 			path:'/400',
 			name:'400',
 			component:()=>import('@/views/error/400')
 		},
+		
+		//测试页面
 		{
     	path:'/t1',
     	name:'t1',
@@ -125,6 +140,7 @@ export default new Router({
     	component:()=>import('@/views/test/check')
     }
   ],
+  
   /**
    * 解决跳转第二页不在顶部的问题！
    */
@@ -132,3 +148,13 @@ export default new Router({
     return { x: 0, y: 0 }
 	}
 })
+
+
+//		{//商品详情页——(导航栏)
+//  	path:'/detailsLayout',
+//  	name:'detailsLayout',
+//  	component:()=>import('@/components/modularization/detailsLayout'),
+//  	children:[
+//  			
+//  	]
+//  },

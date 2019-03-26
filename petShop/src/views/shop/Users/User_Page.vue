@@ -55,6 +55,7 @@
 						<van-icon name="cashier-o" /><br />
 					</div>
 					<span style="font-size: 12px;">待付款</span>
+					<!--<span style="border: 0px solid black; border-radius: 50px; background: red; padding: 2px; color: #FFFFFF; position: absolute;margin-top: -40px;">99</span>-->
 				</div>
 				<div class="User_Types2" @click="goSkip('orderLists','2')">
 					<div class="User_Types_icon">
@@ -123,7 +124,7 @@
 </template>
 
 <script>
-	import { Row, Col, Icon, Cell, Tab, Tabs } from 'vant';
+	import { Row, Col, Icon, Cell, Tab, Tabs  } from 'vant';
 	import recommend1 from '@/views/shop/Users/recommend/recommend1'
 	import recommend2 from '@/views/shop/Users/recommend/recommend2'
 	import recommend3 from '@/views/shop/Users/recommend/recommend3'

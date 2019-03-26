@@ -40,8 +40,8 @@
 			<van-cell title="我的收货地址" is-link  @click="goSkip('ConsigneeList')"/>
 			<van-cell title="地区设置" is-link />
 			<van-cell title="隐私" is-link  to="privacy"/>
-			<van-cell title="问题反馈" is-link to="feedback"/><!---->
-			<van-cell title="关于PetsFree" is-link />
+			<van-cell title="问题反馈" is-link to="feedback"/>
+			<van-cell title="关于PetsFree" is-link @click="goSkip('About_Us')" />
 		</div>
 		
 	</div>
@@ -113,5 +113,5 @@
 		justify-content: center;
 		margin-left: 80%;
 		margin-top: -85px;
-	}
+}
 </style>

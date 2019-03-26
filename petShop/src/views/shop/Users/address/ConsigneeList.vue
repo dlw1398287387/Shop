@@ -36,22 +36,26 @@
 <script>
 	
 	import navigationTop from '@/components/modularization/navigationTop'
-	import { AddressList,Popup ,Toast } from 'vant';
+	import { AddressList,Popup,Toast,Dialog  } from 'vant';
 	export default{
 		name:"AddConsignee",
 		data(){
 			return{
 				chosenAddressId: '1',
 				list: [],
-				show1:false,
+				show1:false, 
 			}
 		},
 		created(){
 			
 		},
+		/**
+		 * 注意。用户第一次使用页面logs中会出现错误信息。不要担心。这个是缓存中没有数据造成的。添加收货地址就恢复正常。不影响正常使用。(数据格式问题)
+		 */
 		mounted(){
-//			this.$nextTick(()=>{})
-			if(JSON.parse(localStorage.getItem('DirectoryInquiries'))==null){
+			console.log(JSON.parse(localStorage.getItem('DirectoryInquiries')))
+//			this.list=JSON.parse(localStorage.getItem('DirectoryInquiries'))
+			if(JSON.parse(localStorage.getItem('DirectoryInquiries')).length==0){
 				this.show1=true
 				console.log(JSON.parse(localStorage.getItem('DirectoryInquiries')))
 			}else{
@@ -68,27 +72,36 @@
 		      	this.$router.push({name:'EditConsignee',params:{ctx:item,index:index}})
 		    },
 		    onSelect(item,index){
-//		      	var addresslists = JSON.parse(localStorage.getItem('DirectoryInquiries'))
-//		      	if(addresslists.length==1){
-//		      		console.log("就一个地址你还设置个蛇？")
-//		      	}else{//简单粗暴的写法，直接把所有的选中ID改为2
-//		      		for(var i=0;i<addresslists.length;i++){
-//		      			addresslists[i].id="2"
-//		      		}
-//		      		//在赋值角标为index的选项
-//		      		addresslists[index].id="1"
-//		     		//然后在存入
-//		      		localStorage.setItem("DirectoryInquiries",JSON.stringify(addresslists))
-//		      		Toast("您将姓名："+item.name+",手机号："+item.tel+",收货地址:"+item.address+",成功设置为默认收货地址！")
-//		      	}
-		    },
-
+		    	console.log(item)
+		    	console.log(index)
+		    	if(item.id!="1"){
+		    		Dialog.confirm({
+					  title: '消息确认',
+					  message: '您确定将此项，修改为默认收货地址吗？（功能修改中!）'
+					}).then(() => {
+					  // 将默认为收货地址的id与当前点击ID互换。并设置进本地缓存
+					  var directoryInquiries=JSON.parse(localStorage.getItem("DirectoryInquiries"))
+					  for(var i=0;i<directoryInquiries.length;i++){
+					  	if(directoryInquiries[i].id=="1"){
+					  		directoryInquiries[i].id=item.id
+					  		directoryInquiries[index].id="1"
+					  	}
+					  }
+					  console.log(directoryInquiries)
+					  localStorage.setItem("DirectoryInquiries",JSON.stringify(directoryInquiries))
+					}).catch(() => {
+					  // 点击取消，将选择器重新赋值为1，
+					  this.chosenAddressId="1"
+					});
+		    	}
+		   },
 		},
 		components:{
 			navigationTop,
 			AddressList,
-			Popup ,
-			Toast 
+			Popup,
+			Toast,
+			Dialog 
 		}
 	}
 </script>
@@ -96,7 +109,6 @@
 <style lang="scss" scoped>
 	.van-address-item__edit{
 		/*display: none;*/
-		
 	}
 	.Popup_r{
 		background: #FFFFFF;

@@ -35,18 +35,19 @@
 			}
 		},
 		mounted(){
-		  console.log(this.$route.params.name)
+		  alert("子页")
+//		  console.log(this.$route.params.name)
 		  this.petInformationName=this.$route.params.name
 		  this.findBypetShops();
 		  this.store_type()
 		},
 		methods:{
 			findBypetShops (){
-				Toast.loading({
-					mask: false,
-					message: 'loading...'
-				});
     			try{
+    				Toast.loading({
+						mask: false,
+						message: 'loading...'
+					});
 		    		var apk=localStorage.getItem('JSON_API_TOKEN') //get安卓 ios 传递过来的jsonAPI串
 		    		var api = JSON.parse(apk)  //转换数据格式
 		    		var timz=this.$SimpleDateFormat()+this.$Gettimezone() 
@@ -68,8 +69,8 @@
 						if(res.data.message=="Success"){
 							console.log(res)
 							console.log(res.data.data)
-							Toast.clear();
 							this.resultData=res.data.data
+							Toast.clear();
 						}
 					})
 				}
@@ -116,9 +117,6 @@
     		}
     		
 		},
-		
-
-		
 		components:{
 			Toast,
 			Loading,

@@ -77,6 +77,15 @@
 				  message: '您确定要删除此项收货地址栏吗？'
 				}).then(() => {
 				 	console.log("是的")
+				 	console.log(this.id)
+				 	console.log(JSON.parse(localStorage.getItem('DirectoryInquiries')))
+				 	var addressLists=JSON.parse(localStorage.getItem('DirectoryInquiries'))
+				 	for(var i=0;i<addressLists.length;i++){
+				 		if(this.id==addressLists[i].id){
+				 			addressLists.splice(i,1)
+				 		}
+				 	}
+				 	localStorage.setItem("DirectoryInquiries",JSON.stringify(addressLists))
 				}).catch(() => {
 				    console.log("不了")
 				})

@@ -16,10 +16,15 @@
 			<span class="feedback_title">问题反馈</span>
 			<div style="border-bottom:1px solid #666 ;"></div>
 			<span class="feedback_thank">对您给予的帮助和支持，深表感谢</span>
-			<van-button type="default" style="display: flex;" @click="()=>actionsheet = !actionsheet">
+			<van-button type="default" style="display: flex; margin-bottom: 20px;" @click="()=>actionsheet = !actionsheet">
 				<span v-show="!checkType">问题类型</span>
 				<span v-show="checkType">{{checkType}}</span>
 			</van-button>
+			
+			
+			<input placeholder="您的联系方式：手机号,邮箱？" class="feedback_input"/>
+			<span style="color: red;float: right;margin-right: 16px; margin-top: -20px;">*选填</span>
+			
 			<van-actionsheet v-model="actionsheet" >
 			  	<van-picker
 				  show-toolbar
@@ -77,6 +82,12 @@
 			font-size: 18px;
 			display: flex;
 			margin: 10px;
+		}
+		.feedback_input{
+			display: flex; 
+			width: 80%;
+			height: 20px;
+			font-size: 12px;
 		}
 		.feedback_thank{
 			font-size: 16px;
